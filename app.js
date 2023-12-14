@@ -7,15 +7,16 @@ class RandomUser{
         let URL = 'https://randomuser.me/api/'; 
         fetch(URL)
         .then(response =>response.json())
-        .then(data => RandomUser.renderUserDatat(data))
-        .catch(er  => alert(er))
+        .then(data => RandomUser.renderUserData(data))
+        .catch(error  => alert(error))
     }
 
     static renderUserData(data){
 
         let user = data.results[0];
-        let cardElem = document.querySelector('card');
-        cardElem.innerHTML = `
+        let cardElem = document.querySelector('.card');
+        cardElem.innerHTML = 
+        ` 
         <div class = "card-head">
             <a href = "mailto:${user.email}"><i class = "fas fa-envelope"></i> Email</a>
             <div class = "user-image">
@@ -60,11 +61,8 @@ class RandomUser{
         `;
     }
 
-    }
-
-
-
 }
+
 
 document.getElementById('generate-btn').addEventListener('click', ()=>{
     RandomUser.fetchFromAPI();
